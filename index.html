@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f4ef">
+  <title>SurfaceCheck | Vulnerability Scanner</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Main navigation">
+      <a class="brand-mark" href="/" aria-label="SurfaceCheck home"><span class="brand-glyph">S</span></a>
+      <div class="rail-rule"></div>
+      <button class="rail-button active" aria-label="Scanner" title="Scanner"><span class="icon scan-icon"></span></button>
+      <button class="rail-button" aria-label="Reports" title="Reports"><span class="icon report-icon"></span></button>
+      <div class="rail-spacer"></div>
+      <span class="rail-status" title="Local scanner"></span>
+    </aside>
+
+    <main class="main-view">
+      <header class="topbar">
+        <div class="crumb"><span>WORKSPACE</span><span class="crumb-slash">/</span><strong>Security overview</strong></div>
+        <div class="topbar-meta"><span class="local-indicator"><i></i> LOCAL MODE</span><span class="date-label" id="today"></span></div>
+      </header>
+
+      <div class="content">
+        <section class="page-heading">
+          <div>
+            <p class="eyebrow">NETWORK ASSESSMENT <span class="eyebrow-line"></span> 01</p>
+            <h1>Surface<span>Check</span></h1>
+            <p class="heading-note">A clear read on what your host exposes.</p>
+          </div>
+          <div class="scope-tag"><span class="scope-icon">⌁</span> PRIVATE NETWORKS ONLY</div>
+        </section>
+
+        <section class="scan-panel" aria-labelledby="scan-title">
+          <div class="scan-panel-copy">
+            <div class="section-index">01 <span>NEW SCAN</span></div>
+            <h2 id="scan-title">Inspect a host</h2>
+            <p>One host · Common TCP ports · Read-only web checks</p>
+          </div>
+          <form id="scan-form" class="scan-form">
+            <label class="target-label" for="target">TARGET HOST</label>
+            <div class="input-row">
+              <span class="input-prefix">⌕</span>
+              <input id="target" name="target" type="text" autocomplete="url" placeholder="localhost or 192.168.1.10" required>
+              <button id="scan-button" class="scan-button" type="submit"><span>Run scan</span><span class="button-arrow">↗</span></button>
+            </div>
+            <div class="form-foot"><span>Try <button type="button" class="example-target" data-target="http://127.0.0.1">127.0.0.1</button></span><span class="lock-label"><span class="lock-icon">▣</span> No public targets</span></div>
+          </form>
+        </section>
+
+        <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+        <section id="results" class="results" aria-live="polite" hidden>
+          <div class="results-heading">
+            <div><p class="eyebrow">SCAN RESULTS <span class="eyebrow-line"></span> <span id="scan-time">JUST NOW</span></p><h2 id="result-host">—</h2></div>
+            <button id="export-button" class="export-button" type="button" title="Download report"><span class="download-icon">↓</span> Export report</button>
+          </div>
+
+          <div class="metrics" id="metrics">
+            <div class="metric metric-risk"><span class="metric-label">HIGH</span><strong id="count-high">0</strong><span class="metric-mark"></span></div>
+            <div class="metric metric-medium"><span class="metric-label">MEDIUM</span><strong id="count-medium">0</strong><span class="metric-mark"></span></div>
+            <div class="metric metric-low"><span class="metric-label">LOW</span><strong id="count-low">0</strong><span class="metric-mark"></span></div>
+            <div class="metric metric-info"><span class="metric-label">INFO</span><strong id="count-info">0</strong><span class="metric-mark"></span></div>
+          </div>
+
+          <div class="result-grid">
+            <section class="findings-section">
+              <div class="section-title"><h3>Findings</h3><span id="finding-count">0 ITEMS</span></div>
+              <div id="findings-list" class="findings-list"></div>
+            </section>
+            <aside class="ports-section">
+              <div class="section-title"><h3>Open ports</h3><span id="port-count">0 FOUND</span></div>
+              <div id="ports-list" class="ports-list"></div>
+              <div class="scope-note"><span class="note-mark">i</span><p>An open port is an observation, not proof of a vulnerability. Confirm each service is expected.</p></div>
+            </aside>
+          </div>
+          <div class="report-foot"><span id="resolved-addresses"></span><span>LIMITED CHECK · VERIFY BEFORE REMEDIATION</span></div>
+        </section>
+
+        <section id="empty-state" class="empty-state">
+          <div class="empty-art" aria-hidden="true"><div class="art-ring ring-one"></div><div class="art-ring ring-two"></div><span class="art-cross cross-a">+</span><span class="art-cross cross-b">+</span><span class="art-dot"></span><div class="art-core"><span></span></div></div>
+          <div class="empty-copy"><span class="empty-number">READY WHEN YOU ARE</span><h2>Start with one host.</h2><p>Results will appear here with the evidence, the signal, and what to look at next.</p></div>
+          <div class="empty-tail">01 <span>—</span> 04</div>
+        </section>
+
+        <footer class="page-footer"><span>SURFACECHECK <span class="footer-dot">●</span> EDUCATIONAL TOOL</span><span>USE ONLY ON SYSTEMS YOU OWN OR ARE AUTHORIZED TO TEST</span></footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
