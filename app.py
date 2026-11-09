@@ -98,7 +98,7 @@ def read_web_headers(host: str, address: str, scheme: str, port: int) -> dict:
         host_header = display_host if port == default_port else f"{display_host}:{port}"
         connection.settimeout(3)
         connection.sendall(
-            f"HEAD / HTTP/1.1\r\nHost: {host_header}\r\nUser-Agent: SurfaceCheck/1.0\r\nConnection: close\r\n\r\n".encode("ascii")
+            f"HEAD / HTTP/1.1\r\nHost: {host_header}\r\nUser-Agent: UMO/1.0\r\nConnection: close\r\n\r\n".encode("ascii")
         )
         response = http.client.HTTPResponse(connection)
         response.begin()
@@ -247,9 +247,9 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     server = ThreadingHTTPServer(("127.0.0.1", 8765), Handler)
-    print("SurfaceCheck is running at http://127.0.0.1:8765")
+    print("UMO is running at http://127.0.0.1:8765")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print("\nStopping SurfaceCheck.")
+        print("\nStopping UMO.")
         server.server_close()

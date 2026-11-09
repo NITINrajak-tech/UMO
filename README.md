@@ -1,4 +1,4 @@
-# SurfaceCheck
+# UMO
 
 A small, local web app for learning basic vulnerability assessment. It checks one localhost or private-network host at a time, reports common open TCP ports, and makes a read-only HTTP `HEAD` request to inspect response headers and visible software-version hints.
 

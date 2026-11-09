@@ -114,7 +114,7 @@ document.querySelector('#export-button').addEventListener('click', () => {
   const file = new Blob([JSON.stringify(latestReport, null, 2)], { type: 'application/json' });
   const link = document.createElement('a');
   link.href = URL.createObjectURL(file);
-  link.download = `surfacecheck-${new Date(latestReport.scanned_at).toISOString().replaceAll(':', '-')}.json`;
+  link.download = `umo-${new Date(latestReport.scanned_at).toISOString().replaceAll(':', '-')}.json`;
   link.click();
   URL.revokeObjectURL(link.href);
 });
